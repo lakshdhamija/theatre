@@ -1,6 +1,4 @@
 import React from "react";
-import userStore from "../store/UserStore";
-
 
 class SubmitButton extends React.Component {
     
