@@ -6,7 +6,7 @@ import SubmitButton from "./SubmitButton";
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { // default state
       categoryId: "1",
       subcategoryId: "1",
       topicId: "1",
@@ -19,10 +19,11 @@ class Form extends React.Component {
   }
   timeout(ms) {
     return new Promise((resolve) => setTimeout(resolve, 1000));
-  }
+  } 
+
   async componentDidMount() {
     await this.timeout(100);
-    try {
+    try { // fetching categoryValues, subcategoryValues and topicValues
       let url = "http://18.220.240.163:8080/rest/admin/";
       let res1 = await fetch(`${url}categories`, {
         method: "get",
@@ -45,11 +46,11 @@ class Form extends React.Component {
           Authorization: UserStore.token,
         }),
       });
-
+      // converting response to json
       let result1 = await res1.json();
       let result2 = await res2.json();
       let result3 = await res3.json();
-      this.setState({
+      this.setState({ // storing the response
         categoryValues: result1.result.list,
         subcategoryValues: result2.result.list,
         topicValues: result3.result.list,
@@ -59,6 +60,8 @@ class Form extends React.Component {
       console.log(e);
     }
   }
+
+  // function called when we click submit button
   async doSubmit() {
     const { categoryValues, subcategoryValues, topicValues } = this.state;
     if (
@@ -76,9 +79,9 @@ class Form extends React.Component {
         method: "post",
         headers: {
           "Content-Type": "application/json",
-          Authorization: UserStore.token,
+          Authorization: UserStore.token, // fetching JWT from UserStore
         },
-        body: JSON.stringify({
+        body: JSON.stringify({ // fields to be passed in body 
           name: "Friend match2",
           imageUrl: "newurl",
           categoryId: this.state.categoryId,
@@ -99,6 +102,8 @@ class Form extends React.Component {
       console.log(e);
     }
   }
+
+  // function to value to categoryId, subcategoryId and topicsId
   setInputValue(property, val) {
     val = val.trim();
     this.setState({

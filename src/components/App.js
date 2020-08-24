@@ -7,14 +7,15 @@ import Form from './Form';
 
 class App extends React.Component {
   render() {
+    // check if user is logged in
     if (UserStore.isLoggedIn) {
       return (
         <div className="App">
-          <div className="container">You are Logged In </div>
+          <p>Welcome {UserStore.userName}, You are Logged In</p> 
           <Form />
         </div>
       );
-    } else {
+    } else { // otherwise display login form
       return (
         <div className="App">
           <div className="container">

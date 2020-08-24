@@ -2,21 +2,27 @@ import React from "react";
 import UserStore from "../store/UserStore";
 import InputField from "./InputField";
 import SubmitButton from "./SubmitButton";
+
 class LoginForm extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { // craete default state
       userName: "",
       password: "",
       buttonDisabled: false,
     };
   }
+
+  //function to set Value of username and password
   setInputValue(property, val) {
     val = val.trim();
     this.setState({
       [property]: val,
     });
   }
+
+  // function to reset the form incase of errors
   resetForm() {
     this.setState({
       userName: "",
@@ -24,11 +30,10 @@ class LoginForm extends React.Component {
       buttonDisabled: false,
     });
   }
+
+  // function to login 
   async doLogin() {
-    if (!this.state.userName) {
-      return;
-    }
-    if (!this.state.password) {
+    if (!this.state.userName || !this.state.password) {
       return;
     }
     this.setState({
@@ -49,11 +54,11 @@ class LoginForm extends React.Component {
         }
       );
       let result = await res.json();
-      if (result && result.success) {
+      if (result && result.success) { // if response is successful
         UserStore.isLoggedIn = true;
-        UserStore.userName = result.userName;
-        UserStore.token = 'Bearer ' + result.result.accessToken;
-      } else if (result && result.success === false) {
+        UserStore.userName = this.state.userName;
+        UserStore.token = 'Bearer ' + result.result.accessToken; // store JWT
+      } else if (result && result.success === false) { // if response is not successful
         this.resetForm();
         alert(result.result.message);
       }
@@ -65,20 +70,21 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="login-form">
-        Login Form
-        <InputField
+        
+        <p>Login Form</p>
+        <InputField // input field for username
           type="text"
           placeholder="Username"
           value={this.state.userName ? this.state.userName : ""}
           onChange={(val) => this.setInputValue("userName", val)}
         />
-        <InputField
+        <InputField // input field for password
           type="password"
           placeholder="Password"
           value={this.state.password ? this.state.password : ""}
           onChange={(val) => this.setInputValue("password", val)}
         />
-        <SubmitButton
+        <SubmitButton // button to submit username and password and generate JWT
           text="Login"
           disabled={this.state.buttonDisabled}
           onClick={() => this.doLogin()}
