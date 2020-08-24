@@ -52,10 +52,10 @@ class LoginForm extends React.Component {
       if (result && result.success) {
         UserStore.isLoggedIn = true;
         UserStore.userName = result.userName;
-        UserStore.token = result.result.accessToken;
+        UserStore.token = 'Bearer ' + result.result.accessToken;
       } else if (result && result.success === false) {
         this.resetForm();
-        alert(result.message);
+        alert(result.result.message);
       }
     } catch (e) {
       console.log(e);
