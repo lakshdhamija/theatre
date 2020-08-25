@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Theatre
 
-## Available Scripts
+![Project Image](./image.png)
 
-In the project directory, you can run:
+> This is a React App which references an API and displays the data.
 
-### `npm start`
+---
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Table of Contents
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [Description](#description)
+- [How To Use](#how-to-use)
+- [Author Info](#author-info)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Description
 
-### `npm run build`
+- In this App, the user can log in using their credentials. After loggin in, a JWT will be generated which will be used to authenticate the user and fetch other details like categories, sub-categories and topics which are displayed in the dropdown menu. Finally, the submit button will use the values from the dropdown to send a request to the server and return true if the request has been accepted.
+- Username: Test
+- Password: Test123
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Technologies
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- ReactJs
+- HTML
+- CSS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## How To Use
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Installation
+- To install project, simply clone the repository and run "npm install" in the terminal to install all the dependencies.
+- To run project, run "npm start" in the terminal and the project will be hosted at : "http://localhost:3000/"
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### API Reference
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. POST : 'http://18.220.240.163:8080/rest/authenticate/login' - required username and password to be passed in body and returns JWT in response.
+2. GET : 'http://18.220.240.163:8080/rest/admin/categories' - requires JWT to be passed as Authorization Header.
+3. GET : 'http://18.220.240.163:8080/rest/admin/subcategories' - requires JWT to be passed as Authorization Header.
+4. GET : 'http://18.220.240.163:8080/rest/admin/topics' - requires JWT to be passed as Authorization Header.
+5. POST : 'http://18.220.240.163:8080/rest/admin/matches' - requires JWT to be passed as Authorization Header and "name", "imageUrl", "categoryId", "subCategoryId", "topicId","startDate" and "endDate" to be passed in body. Sample parameters: '{"name":"Friend match2","imageUrl":"newurl","categoryId":"2","subCategoryId":"2","topicId":"60","startDate":"2020-08-07T18:30:00.000Z","endDate":"2021-08-25T18:30:00.000Z"}'
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+## Author Info
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- LinkedIn - [@lakshdhamija](https://linkedin.com/in/lakshdhamija)
