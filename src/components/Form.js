@@ -1,6 +1,6 @@
 import React from "react";
 import UserStore from "../store/UserStore";
-import Dropdown from "./Dropdowwn";
+import Dropdown from "./Dropdown";
 import SubmitButton from "./SubmitButton";
 
 class Form extends React.Component {
@@ -112,7 +112,7 @@ class Form extends React.Component {
   }
   render() {
     if (this.state.loading) {
-      return <div className="form">Loading...</div>;
+      return <div className="form"><p>Loading ...</p></div>;
     } else {
       return (
         <div className="form">

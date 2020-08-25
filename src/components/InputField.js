@@ -4,6 +4,7 @@ class InputField extends React.Component {
   render() {
     return (
       <div className="input-field">
+        <i class={this.props.icon}></i>
         <input
           className="input"
           type={this.props.type}

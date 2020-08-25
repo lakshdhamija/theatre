@@ -72,14 +72,17 @@ class LoginForm extends React.Component {
       <div className="login-form">
         
         <p>Login Form</p>
+
         <InputField // input field for username
           type="text"
           placeholder="Username"
+          icon='far fa-user'
           value={this.state.userName ? this.state.userName : ""}
           onChange={(val) => this.setInputValue("userName", val)}
         />
         <InputField // input field for password
           type="password"
+          icon='fas fa-key'
           placeholder="Password"
           value={this.state.password ? this.state.password : ""}
           onChange={(val) => this.setInputValue("password", val)}

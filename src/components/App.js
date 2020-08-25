@@ -18,9 +18,7 @@ class App extends React.Component {
     } else { // otherwise display login form
       return (
         <div className="App">
-          <div className="container">
             <LoginForm />
-          </div>
         </div>
       );
     }
